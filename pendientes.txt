@@ -1,0 +1,80 @@
+TO DO
+4) crear una funcion que recibe id platillo y muestra los ingredientes, 
+los productos por nombre. (VER NOTAS -> Creo que seria mejor que lo mostremos con las recetas)
+5) ponerle a productos el dni y la fecha.HECHO (ver que tome el dni del usuario actual) pendiente!!.
+6 bis) Descontar de stock productos cuando se realiza el consumo de un platillo.HECHO
+9) antes del menu principal agregar un menu que pida dni del usuario que ingresa a la aplicacion
+11 bis) Validar idproducto por productosXplatillo. INICIADO, HAY UN TEMA SI VALIDA Y QUIERE CANCELAR.
+CRIS:
+15) Se modifico stock para que al agregar un producto sume 1 y luego al ingresar producto existente sume al 1 que ya tiene, y si retira y queda 1 en stock, lo elimina de productos seteando el estado.
+16) validamos el dni cuando ingresa o se retira un producto.HECHO
+
+
+
+HECHAS
+1)cambiar orientacion alimentaria en vez de nombre poner id en platillo. HECHO
+2)agregar listado de orientacion alimentaria a usuario para cargar el id de orientacion, que muestre opciones.HECHO
+3) crear una funcion que recibe id orientacion y muestra el nombre de la orientacion. HECHO (en usuario y platillo)
+8) agregar cpp de funciones globales HECHO
+10) agregar a las clases que tienen estado la opcion eliminar (HECHO EN USUARIO, PRODUCTO, PLATILLO, ORIENTACION, RECETAS).
+13) Fixear que se puedan ingresar strings con espacios. HECHO
+6) entrar a opcion cosumo platillo y que te liste las opciones de platillo y ahi el usuario elige que platillo quiere. HECHO
+14) FIX Fecha Actual en consumos. HECHO
+11) VALIDAR DNI POR USUARIO. HECHO (Tendriamos que ver que hacemos con los que se dan de baja y se vuelven a ingresar) PARA MI SE VUELVE A INGRESAR PORQUE AL TENER ESTADO EN FALSE ES COMO QUE YA NO EXISTE, Y VUELVE A ENTRAR.
+12) validar los nombres de los productos que no se repitan. HECHO
+
+NOTAS
+
+4_ En listar recetas, saque la descripcion. estaria bueno agregarle una opcion que te pida ingresar un ID de receta para que te muestre su descripcion.HECHO
+7) cada vez que se agrega un producto se suma en la clase stock y lo mismo si se retira. (VER NOTAS)HECHO
+7_ Tenemos que definir algo. Agregar producto solo te deje agregar un producto nuevo que antes no existia, y en el stock le indicamos cuanto stock tiene. 
+
+
+POST PROTOTIPO
+
+1) Reportes
+2) Informes
+3) Alerta de stock
+4) Funcionalidad de ideas segun disponibilidad
+
+
+10/06/2022
+
+CRIS HABLE CON ANGEL SUGERIO AGREGAR CONSUMOS POR CALORIAS, ASI QUE HICE UN MENU Y AGREGUE SUGERENCIAS DE PLATILLOS POR CALORIAS Y POR ORIENTACION ALIMENTARIA, LO PROBE Y EN TEORIA SUGERIE BIEN Y DESCUENTA BIEN DEL STOCK.
+
+IDEAS QUE FALTARIAN:
+PROPUSO ANGEL QUE EN RECETAS NOS SUGIERA DE ACUERDO AL STOCK DE PRODUCTOS QUE PODES PREPARAR, PUEDE CONTENER VARIOS PRODUCTOS O ALGUNO DE LOS PRODUCTOS DE STOCK.(le puse que tenga todos los productos no le veo sentido a hacer una receta sino tenes todos los ingredientes)
+TAMBIEN PROPUSO AGREGAR A PRODUCTOS FECHA DE VENCIMIENTO Y QUE AVISE CUANDO ESTAN POR VENCER(SE ME OCURRE QUE AVISE SI VENCEN HOY Y USAMOS EL CONTRUCTOR DE FECHA DEL DIA) (Bien, me gusta, hay que pensarlo.)
+
+COSAS QUE ME PARECE A MI CAMBIAR Y LAS ANOTO ACA ASI ME ACUERDO:
+- LA ALERTA DE STOCK QUE AVISA LOS PRODUCTOS QUE TIENEN UNA SOLA UNIDAD
+- VALIDACION DE STRING, PASAR TODO A MAYUSCULA CUANDO SE INGRESA UN NOMBRE POR EJEMPLO PARA PODER VALIDAR DESPUES SI EL NOMBRE ES IGUAL. ANGEL ME DIJO QUE NO EXISTE FUNCION PARA HACER ESO Y QUE HAY QUE HACERLA MANUALMENTE, HACIENDO UNA FUNCION QUE RECIBE UN STRING, LO RECORRE Y TOMA CARACTER A CARACTER COMO UNA POSICION Y EN ESA MISMA POSICION SE GUARDA HACIENDO ASI TOUPPER(A) POR EJ. ALGO ASI ME EXPLICO HAY QUE VER COMO CARAJO SE HACE JAJA.
+- CAMBIAR TODOS LOS LISTADOS PARA QUE SE VEAN MAS LINDOS CON ESAS FUNCIONES QUE USAMOS EN EL PARCIAL.
+
+10/06 Anotaciones cris xd:
+
+Validacion string: Logre hacerlo, me volvi loco. Hecho en producto, platillo, orientacion. (creo que con estas estamos) EXCELENTE CRIS QUEDO GENIAL!!!!!!
+Recetas segun stock: Esto lo habia pensado asi pero desde el menu de sugerencias (vi q lo metiste en el de consumos, por ahi separarlo) 
+Fecha de vencimiento: Me gusta, hay que pensarlo un poco.
+Alerta de stock: lo mismo que habia pensado, tamos bien. HECHO, PARECE QUE HAY UN TEMA Y MUESTRA ALGO DE MAS.(SOLUCIONADO)
+Cambiar listados visualmente: si, lo vengo pensando y medio que dejar para lo ultimo para que no llenar el codigo de cosas y marearnos.
+Cuando se elimina un producto, hay que eliminar el stock. HECHO
+
+
+11/06/2022 ANOTACIONES SAN
+
+- AHORA QUE LO PIENSO ELIMINAR PRODUCTO NO ESTARIA MEDIO AL PEPE? DEJAMOS SOLO RETIRAR PRODUCTOS?
+-  SOLUCIONADO LO DE ALERTAS STOCK.
+- verificar si cuando se elimina un platillo se elimina de productos por platillo.(pendiente, no recuerdo si esta)
+- cambiar en productos por platillo que muestra el nombre del producto y sus ingredientes, ponerlo mas lindo.(pendiente)
+
+bueno cris: creo que estamos con el proyecto, ya quedo recetas, te muestra una lista, elegis y ahi te muestra los ingredientes y sus intrucciones, despues hay una opcion de sugerencias de recetas que te dice si tenes todos los ingrediente sino no, y cambie en productos ya agregue la fecha de vencimiento y por lo que veo funciona bien, se agrego en productos la alerta y lista los que vencen hoy por ejemplo.
+lo que faltaria es revisar todo, probarlo bien que funcione todo, borrar lo que no va, modificar los listados para que se vean mas lindo y una vez que quede todo, creo que ahi nos ponemos con la estetica, no se ponerle colores y centrar los menus y demas con rutil puede ser.
+
+14/06
+
+1. Agregar producto deberia pedir el usuario y generar un ingreso. HECHO.
+2. Generar un consumo deberia generar un retiro? 
+3. Fecha vencimiento +1 semana desde la fecha que se ingresa y un ingreso actualice el vencimiento del producto a 1 semana.
+4. Cambiar listar productos por platillo a nombres. HECHO
+5. Reportes y busquedas.
