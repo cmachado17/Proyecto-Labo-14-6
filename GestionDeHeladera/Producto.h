@@ -49,6 +49,7 @@ class Producto{
     bool validarProductoExistente(string);
     bool validarProductoExistenteID(int id);
     void alertaDeProductosAVencer();
+    void buscarProducto();
 
 
 

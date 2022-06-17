@@ -74,10 +74,12 @@ bool nuevoConsumoPlatillo()
 {
     ConsumoPlatillo reg;
     reg = cargarConsumoPlatillo();
+
     bool ok = reg.GrabarEnDisco();
     if(ok){
         int platillo= reg.getIdPlatillo();
         ok = retirarProductoDelStockDesdePlatillo(platillo);
+        //retirarProductoPorConsumo(platillo);
       }
     return ok;
 }

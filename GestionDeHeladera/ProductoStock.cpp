@@ -458,31 +458,6 @@ void listarStocks()
     cout<<endl;
 }
 
-void alertaStock()
-{
-    ProductoStock aux;
-    int cont=0;
-    int cantStocks = CantidadRegistrosStock();
-    cout << "PRODUCTOS PROXIMOS A AGOTARSE" << endl;
-    cout << "----------------------------------" << endl;
-    for(int i=0; i<cantStocks; i++)
-    {
-        aux.LeerDeDisco(i);
-        if(aux.getEstadoStock() &&  aux.getStock()==1)
-        {
-            cout<<aux.toString()<<endl;
-        }
-        else
-        {
-            cont++;
-        }
-    }
-    cout << "----------------------------------" << endl;
-    cout << "Total: " << cantStocks - cont << " registros.";
-    cout<<endl;
-    cout<<endl;
-}
-
 void menuStockProductos()
 {
     int opc;
@@ -493,11 +468,9 @@ void menuStockProductos()
         cout<<"MENU STOCK DE PRODUCTOS"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"1. LISTAR STOCK "<<endl;
-        cout<<"2. ALERTAS DE STOCK"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
-
         cout<<"OPCION: ";
         cin>>opc;
 
@@ -508,10 +481,6 @@ void menuStockProductos()
 
         case 1:
             listarStocks();
-            system("pause");
-            break;
-        case 2:
-            alertaStock();
             system("pause");
             break;
         case 0:

@@ -68,7 +68,7 @@ bool Usuario::GrabarEnDisco()
     int escribio=fwrite(this, sizeof(Usuario),1,p);
     fclose(p);
 
-   return escribio;
+    return escribio;
 }
 
 
@@ -141,9 +141,12 @@ Usuario cargarUsuario()
     }
 
     cout << "Ingrese el nombre: ";
-    cin >> nombre;
+    cin.ignore();
+    getline(cin, nombre);
+    nombre = mayuscula(nombre);
     cout << "Ingrese el apellido: ";
-    cin >> apellido;
+    getline(cin, apellido);
+    apellido = mayuscula(apellido);
     cout<<endl;
     listarOrientacionAlimentaria();
     cout<<endl;
@@ -191,7 +194,9 @@ void listarUsuarios()
         if(aux.getEstadoUsuario())
         {
             cout<<aux.toString()<<endl;
-        }else{
+        }
+        else
+        {
             cont++;
         }
     }
@@ -226,6 +231,128 @@ int EliminarUsuario()
     return -1;
 }
 
+void buscarUsuarioNombre()
+{
+    Usuario reg;
+    int pos = 0;
+    bool bandera = false;
+    string nombre;
+
+    cout << "Ingrese el nombre del usuario a buscar: ";
+    cin.ignore();
+    getline(cin, nombre);
+    nombre = mayuscula(nombre);
+
+    while(reg.LeerDeDisco(pos))
+    {
+        if(reg.getNombre() == nombre && reg.getEstadoUsuario())
+        {
+            cout << reg.toString() << endl;
+            bandera = true;
+        }
+        pos++;
+    }
+
+    if(bandera == false)
+    {
+        cout << "No hay usuarios con ese nombre." << endl;
+    }
+}
+
+void buscarUsuarioDNI()
+{
+    Usuario reg;
+    int pos = 0;
+    bool bandera = false;
+    int dni;
+
+    cout << "Ingrese el dni: ";
+    cin >> dni;
+
+    while(reg.LeerDeDisco(pos))
+    {
+        if(reg.getDNI() == dni && reg.getEstadoUsuario())
+        {
+            cout << reg.toString() << endl;
+            bandera = true;
+        }
+        pos++;
+    }
+    if(bandera == false)
+    {
+        cout << "No hay usuarios con ese dni." << endl;
+    }
+}
+
+void buscarUsuarioOrientacion()
+{
+    Usuario reg;
+    int pos = 0;
+    bool bandera = false;
+    int orientacion;
+
+    listarOrientacionAlimentaria();
+
+    cout << "Ingrese el id de la orientacion: ";
+    cin >> orientacion;
+
+    while(reg.LeerDeDisco(pos))
+    {
+        if(reg.getIdOrientacionAlimentaria() == orientacion && reg.getEstadoUsuario())
+        {
+            cout << reg.toString() << endl;
+            bandera = true;
+        }
+        pos++;
+    }
+    if(bandera == false)
+    {
+        cout << "No hay usuarios con esa orientacion." << endl;
+    }
+}
+
+void menuBuscarUsuario()
+{
+    int opc;
+    while(true)
+    {
+        system("cls");
+
+        cout<<"MENU USUARIO"<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"1. BUSCAR POR NOMBRE"<<endl;
+        cout<<"2. BUSCAR POR DNI"<<endl;
+        cout<<"3. BUSCAR POR ORIENTACION"<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"0. SALIR"<<endl;
+        cout<<endl;
+
+        cout<<"OPCION: ";
+        cin>>opc;
+
+        system("cls");
+
+        switch(opc)
+        {
+        case 1:
+            buscarUsuarioNombre();
+            system("pause");
+            break;
+        case 2:
+            buscarUsuarioDNI();
+            system("pause");
+            break;
+        case 3:
+            listarUsuarios();
+            system("pause");
+            break;
+        case 0:
+            return;
+            break;
+        }
+        cout<<endl;
+    }
+}
 
 
 void menuUsuario()
@@ -240,6 +367,7 @@ void menuUsuario()
         cout<<"1. AGREGAR USUARIO "<<endl;
         cout<<"2. ELIMINAR USUARIO"<<endl;
         cout<<"3. LISTAR USUARIOS "<<endl;
+        cout<<"4. BUSCAR USUARIO"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -286,6 +414,9 @@ void menuUsuario()
         case 3:
             listarUsuarios();
             system("pause");
+            break;
+        case 4:
+            menuBuscarUsuario();
             break;
         case 0:
             return;

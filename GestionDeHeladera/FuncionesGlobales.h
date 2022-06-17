@@ -6,6 +6,7 @@
 #include "Platillo.h"
 #include "Producto.h"
 #include "ProductoStock.h"
+#include "RetiroProducto.h"
 
 
 void menuConsumos();
@@ -16,8 +17,11 @@ string mayuscula(string cadena);
 Producto buscarProductoPorId(int id);
 void eliminarStock(int idproducto);
 void prueba();
-
-
+void menuReportes();
+void PlatillosAnual();
+void PlatillosMensual();
+void alertaStock();
+RetiroProducto retirarProductoPorConsumo(int idplatillo);
 
 
 
