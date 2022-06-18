@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "Usuario.h"
 #include "FuncionesGlobales.h"
 
@@ -34,7 +35,16 @@ string Usuario::toString()
 {
     string cadena;
     cadena = " Id: " + to_string(id) + " " " " + " Dni: " + to_string(DNI) + " " " " + "Nombre: " + nombre + " " " " + " Apellido: " + apellido + " " " " + " Orientacion Alimentaria: " +          mostrarOrientacionAlimentaria(getIdOrientacionAlimentaria());
+
     return cadena;
+}
+
+void Usuario::toList()
+{
+    cout << left;
+    cout << setw(10) << to_string(DNI);
+    cout << setw(17) << getNombre();
+    cout << setw(17)  << getApellido() << endl;
 }
 
 
@@ -160,8 +170,7 @@ Usuario cargarUsuario()
     reg.setApellido(apellido);
     reg.setIdOrientacionAlimentaria(idOrientacionAlimentaria);
     reg.setEstadoUsuario(estado);
-    cout<<endl;
-    cout<<endl;
+
     return reg;
 }
 
@@ -186,21 +195,36 @@ void listarUsuarios()
     Usuario aux;
     int cont=0;
     int cantUsuarios=CantidadRegistrosUsuario();
-    cout << "LISTADO DE USUARIOS" << endl;
-    cout << "----------------------------------" << endl;
+    cout << left;
+    cout << setw(20) << "\t";
+    cout << "USUARIOS" << endl;
+    cout << "---------------------------------------------------------------" << endl;
+
+    cout << setw(4)  << "ID";
+    cout << setw(10) << "DNI";
+    cout << setw(17) << "NOMBRE";
+    cout << setw(17)  << "APELLIDO";
+    cout << setw(20) << "O. ALIMENTARIA" << endl;
+
+    cout << "---------------------------------------------------------------" << endl;
     for(int i=0; i<cantUsuarios; i++)
     {
         aux.LeerDeDisco(i);
         if(aux.getEstadoUsuario())
         {
-            cout<<aux.toString()<<endl;
+            cout << left;
+            cout << setw(4)  << aux.getId();
+            cout << setw(10) << aux.getDNI();
+            cout << setw(17) << aux.getNombre();
+            cout << setw(17)  << aux.getApellido();
+            cout << setw(20) << mostrarOrientacionAlimentaria(aux.getIdOrientacionAlimentaria()) << endl;
         }
         else
         {
             cont++;
         }
     }
-    cout << "----------------------------------" << endl;
+    cout << "---------------------------------------------------------------" << endl;
     cout << "Total: " << cantUsuarios - cont<< " Usuarios.";
     cout<<endl;
     cout<<endl;
@@ -242,12 +266,17 @@ void buscarUsuarioNombre()
     cin.ignore();
     getline(cin, nombre);
     nombre = mayuscula(nombre);
-
+    cout << endl;
+    cout << left;
+    cout << setw(10) << "DNI";
+    cout << setw(17) << "NOMBRE";
+    cout << setw(17)  << "APELLIDO" << endl;
+    cout << endl;
     while(reg.LeerDeDisco(pos))
     {
         if(reg.getNombre() == nombre && reg.getEstadoUsuario())
         {
-            cout << reg.toString() << endl;
+            reg.toList();
             bandera = true;
         }
         pos++;
@@ -255,8 +284,10 @@ void buscarUsuarioNombre()
 
     if(bandera == false)
     {
+        system("cls");
         cout << "No hay usuarios con ese nombre." << endl;
     }
+    cout << endl;
 }
 
 void buscarUsuarioDNI()
@@ -269,19 +300,27 @@ void buscarUsuarioDNI()
     cout << "Ingrese el dni: ";
     cin >> dni;
 
+    cout << endl;
+    cout << left;
+    cout << setw(10) << "DNI";
+    cout << setw(17) << "NOMBRE";
+    cout << setw(17)  << "APELLIDO" << endl;
+    cout << endl;
     while(reg.LeerDeDisco(pos))
     {
         if(reg.getDNI() == dni && reg.getEstadoUsuario())
         {
-            cout << reg.toString() << endl;
+            reg.toList();
             bandera = true;
         }
         pos++;
     }
     if(bandera == false)
     {
+        system("cls");
         cout << "No hay usuarios con ese dni." << endl;
     }
+    cout << endl;
 }
 
 void buscarUsuarioOrientacion()
@@ -296,19 +335,27 @@ void buscarUsuarioOrientacion()
     cout << "Ingrese el id de la orientacion: ";
     cin >> orientacion;
 
+    cout << endl;
+    cout << left;
+    cout << setw(10) << "DNI";
+    cout << setw(17) << "NOMBRE";
+    cout << setw(17)  << "APELLIDO" << endl;
+    cout << endl;
     while(reg.LeerDeDisco(pos))
     {
         if(reg.getIdOrientacionAlimentaria() == orientacion && reg.getEstadoUsuario())
         {
-            cout << reg.toString() << endl;
+            reg.toList();
             bandera = true;
         }
         pos++;
     }
     if(bandera == false)
     {
+        system("cls");
         cout << "No hay usuarios con esa orientacion." << endl;
     }
+    cout << endl;
 }
 
 void menuBuscarUsuario()
@@ -343,7 +390,7 @@ void menuBuscarUsuario()
             system("pause");
             break;
         case 3:
-            listarUsuarios();
+            buscarUsuarioOrientacion();
             system("pause");
             break;
         case 0:

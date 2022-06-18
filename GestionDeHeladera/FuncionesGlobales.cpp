@@ -61,6 +61,130 @@ void menuConsumos()
     }
 }
 
+int buscarStockDeProducto(int idproducto)
+{
+    ProductoStock reg;
+    int pos = 0;
+
+    while(reg.LeerDeDisco(pos))
+    {
+        if(reg.getIdProducto() == idproducto)
+        {
+            return reg.getStock();
+        }
+        pos++;
+    }
+    return -1;
+}
+void copiarProductos(Producto *vDinamico, int cantidad, int idplatillo)
+{
+    ProductosxPlatillo reg;
+    int pos = 0;
+    int i = 0;
+
+    while(reg.LeerDeDisco(pos) && cantidad != 0)
+    {
+        if(reg.getIdPlatillo() == idplatillo)
+        {
+            vDinamico[i].setIdProducto(reg.getIdProducto());
+            i++;
+            cantidad--;
+        }
+        pos++;
+    }
+}
+
+
+void  sugerenciaPorStock()
+{
+    Platillo reg;
+    int pos = 0;
+    bool bandera;
+
+    while(reg.LeerDeDisco(pos))
+    {
+        bandera = true;
+        if(reg.getEstadoPlatillo())
+        {
+            Producto *vDinamico;
+
+            int cantidad = CantidadProductosxPlatillo(reg.getIdPlatillo());
+
+            vDinamico = new Producto[cantidad];
+
+            if(vDinamico == NULL)
+            {
+                cout << "ERROR" <<endl;
+                return;
+            }
+
+            copiarProductos(vDinamico,cantidad, reg.getIdPlatillo());
+
+            for(int i = 0; i<cantidad; i++)
+            {
+                if(buscarStockDeProducto(vDinamico[i].getIdProducto())<= 0)
+                {
+                    bandera = false;
+                }
+            }
+
+            if(bandera)
+            {
+                cout << reg.toString() << endl;
+            }
+
+            delete vDinamico;
+        }
+        pos++;
+    }
+
+}
+
+void MenuSugerencias()
+{
+    int opc;
+    while(true)
+    {
+        system("cls");
+
+        cout<<"MENU SUGERENCIAS"<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"1. SUGERENCIA POR ORIENTACION "<<endl;
+        cout<<"2. SUGERENCIA POR CALORIAS"<<endl;
+        cout<<"3. SUGERENCIA POR DISPONIBILIDAD"<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"0. SALIR"<<endl;
+        cout<<endl;
+
+        cout<<"OPCION: ";
+        cin>>opc;
+
+        system("cls");
+
+        switch(opc)
+        {
+        case 1:
+            sugerenciasXOrientacion();
+            system("pause");
+            break;
+        case 2:
+            sugerenciasXCalorias();
+            system("pause");
+            break;
+        case 3:
+            sugerenciaPorStock();
+            system("pause");
+            break;
+        case 0:
+            return;
+            break;
+        }
+        cout<<endl;
+    }
+}
+
+
+
 void menuReportes()
 {
     int opc;
@@ -72,7 +196,7 @@ void menuReportes()
         cout<<"-------------------"<<endl;
         cout<<"1. CONSUMOS ANUALES "<<endl;
         cout<<"2. CONSUMOS MENSUALES"<<endl;
-        cout<<"3. PLATILLOS SUGERIDOS"<<endl;
+        cout<<"3. MENU DE SUGERENCIAS"<<endl;
         cout<<"4. ALERTAS DE STOCK"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
@@ -94,6 +218,7 @@ void menuReportes()
             system("pause");
             break;
         case 3:
+            MenuSugerencias();
             system("pause");
             break;
         case 4:
@@ -107,7 +232,6 @@ void menuReportes()
         cout<<endl;
     }
 }
-
 
 string mostrarOrientacionAlimentaria(int id)
 {
@@ -250,7 +374,7 @@ void alertaStock()
     for(int i=0; i<cantStocks; i++)
     {
         aux.LeerDeDisco(i);
-        if(aux.getEstadoStock() &&  aux.getStock()==1)
+        if(aux.getEstadoStock() &&  aux.getStock()<= 1)
         {
             cout<<aux.toString()<<endl;
         }

@@ -40,6 +40,7 @@ using namespace std;
             bool ModificarArchivo(int pos);
             int buscarUsuario(int dni);
             bool EliminarUsuario();
+            void toList();
 
     };
 
