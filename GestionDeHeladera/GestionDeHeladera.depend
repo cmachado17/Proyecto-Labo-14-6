@@ -552,7 +552,7 @@
 	<cstring>
 	<string>
 
-1655669323 e:\practicas\facultad\labo2\proyecto2-6\proyecto-labo-14-6\gestiondeheladera\producto.h
+1655675968 e:\practicas\facultad\labo2\proyecto2-6\proyecto-labo-14-6\gestiondeheladera\producto.h
 	<cstring>
 	<cstdlib>
 	<string>
@@ -611,7 +611,7 @@
 	<iostream>
 	"FuncionesGlobales.h"
 
-1655672144 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto-labo-14-6\gestiondeheladera\ingresoproducto.cpp
+1655675168 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto-labo-14-6\gestiondeheladera\ingresoproducto.cpp
 	<cstdlib>
 	<cstring>
 	<iostream>
@@ -653,8 +653,9 @@
 	"Platillo.h"
 	"FuncionesGlobales.h"
 
-1655670358 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto-labo-14-6\gestiondeheladera\producto.cpp
+1655675757 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto-labo-14-6\gestiondeheladera\producto.cpp
 	<iostream>
+	<iomanip>
 	"Producto.h"
 	"ProductoStock.h"
 	"IngresoProducto.h"
@@ -691,7 +692,7 @@
 	"ProductoStock.h"
 	"Usuario.h"
 
-1655585716 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto-labo-14-6\gestiondeheladera\usuario.cpp
+1655674491 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto-labo-14-6\gestiondeheladera\usuario.cpp
 	<iostream>
 	<iomanip>
 	"Usuario.h"
