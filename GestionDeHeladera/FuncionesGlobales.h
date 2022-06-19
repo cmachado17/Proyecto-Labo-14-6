@@ -27,5 +27,6 @@ void MenuSugerencias();
 void  sugerenciaPorStock();
 int buscarStockDeProducto(int idproducto);
 void copiarProductos(Producto *vDinamico, int cantidad, int idplatillo);
+void eliminarPlatillos(int idproducto);
 
 #endif // FUNCIONESGLOBALES_H_INCLUDED

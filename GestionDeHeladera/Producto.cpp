@@ -240,6 +240,7 @@ int EliminarProducto()
             bool modifico = aux.ModificarArchivo(pos);
             if (modifico){
                 eliminarStock(idproducto);
+                eliminarPlatillos(idproducto);
             }
             return pos;
         }

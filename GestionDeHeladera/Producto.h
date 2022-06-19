@@ -14,7 +14,6 @@ class Producto{
         Fecha fechaVencimiento;
         bool estadoProducto;
 
-
     public:
         //getters
         int getIdProducto(){return idProducto;}

@@ -313,6 +313,22 @@ void eliminarStock(int idproducto)
     }
 }
 
+void eliminarPlatillos(int idproducto)
+{
+    ProductosxPlatillo reg;
+    Platillo aux;
+    int pos = 0;
+
+    while(reg.LeerDeDisco(pos))
+    {
+        if(reg.getIdProducto() == idproducto)
+        {
+            EliminarPlatilloPorParametro(reg.getIdPlatillo());
+        }
+        pos++;
+    }
+}
+
 void prueba()
 {
     Producto reg;
