@@ -139,18 +139,19 @@ Producto cargarProducto()
         nombre = mayuscula(nombre);
     }
 
-    cout << "Ingrese el dia: ";
+    /*cout << "Ingrese el dia: ";
     cin >> dia;
     cout << "Ingrese el mes: ";
     cin >> mes;
     cout << "Ingrese el anio: ";
-    cin >> anio;
+    cin >> anio; */
 
-    Fecha fecha(dia, mes, anio);
+    Fecha fechavencimiento(7);
+    Fecha fecha;
     Producto reg;
     reg.setIdProducto(id);
     reg.setNombreProducto(nombre);
-    reg.setFechaVencimiento(fecha);
+    reg.setFechaVencimiento(fechavencimiento);
     reg.setEstadoProducto(estado);
 
     //agrega producto al stock

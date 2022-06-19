@@ -329,6 +329,19 @@ void eliminarPlatillos(int idproducto)
     }
 }
 
+    void modificarVencimientoProducto(int idproducto, Fecha fecha){
+        Producto reg;
+        int pos = 0;
+
+        while(reg.LeerDeDisco(pos)){
+                if(reg.getIdProducto() == idproducto){
+                    reg.setFechaVencimiento(fecha);
+                    reg.ModificarArchivo(pos);
+                }
+            pos++;
+        }
+    }
+
 void prueba()
 {
     Producto reg;

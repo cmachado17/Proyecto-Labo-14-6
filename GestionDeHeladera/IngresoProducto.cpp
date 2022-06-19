@@ -128,14 +128,16 @@ IngresoProducto cargarProductoExistente()
         cin >> idProducto;
     }
     //ver si cargamos la fecha o tomamos la actual
-    cout << "Ingrese el dia: ";
+    /*cout << "Ingrese el dia: ";
     cin >> dia;
     cout << "Ingrese el mes: ";
     cin >> mes;
     cout << "Ingrese el anio: ";
-    cin >> anio;
+    cin >> anio;*/
 
     Fecha fecha(dia, mes, anio);
+    Fecha fechaVencimiento(7);
+
     IngresoProducto reg;
     reg.setIdIngreso(id);
     reg.setDniUsuario(dniUsuario);
@@ -143,6 +145,8 @@ IngresoProducto cargarProductoExistente()
     reg.setFechaIngreso(fecha);
     //agrega al stock de productos el ingresado
     agregarProductoAlStock(idProducto);
+    //modificamos el vencimiento del producto
+    modificarVencimientoProducto(idProducto, fechaVencimiento);
 
     cout<<endl;
     cout<<endl;
